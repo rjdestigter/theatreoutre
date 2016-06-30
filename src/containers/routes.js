@@ -1,13 +1,13 @@
-import React from "react";
-import {Router, Route} from "react-router";
+import React from 'react'
+import { Router, Route } from 'react-router'
 
-import Main from "./Main";
+import TheatreOutre from './Site'
 
 /**
  * The React Router routes for both the server and the client.
  */
 module.exports = (
-	<Router>
-		<Route path="/" component={Main} />
-	</Router>
-);
+  <Router>
+    <Route path='/' component={TheatreOutre} />
+  </Router>
+)

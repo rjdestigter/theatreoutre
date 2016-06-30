@@ -1,0 +1,69 @@
+{
+  "name": "theatreoutre",
+  "description": "Website for Theatre Outré, Lethbridge, AB, Canada",
+  "version": "0.7.1",
+  "license": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rjdestigter/theatreoutre"
+  },
+  "homepage": "http://www.theatreoutre.ca",
+  "keywords": [
+    "theatre",
+    "outre",
+    "queer",
+    "lethbridge",
+    "canada"
+  ],
+  "main": "dist/server.js",
+  "scripts": {
+    "start": "forever --minUptime 1000 --spinSleepTime 1000 -c \"node --harmony\" ./dist/server.js",
+    "build-server": "webpack --colors --display-error-details --config configs/webpack.server.js",
+    "build-client": "webpack --colors --display-error-details --config configs/webpack.client.js",
+    "build": "concurrently \"npm run build-server\" \"npm run build-client\"",
+    "watch-server": "webpack --watch --verbose --colors --display-error-details --config configs/webpack.server-watch.js",
+    "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
+    "watch-client": "webpack-dev-server --config configs/webpack.client-watch.js",
+    "watch": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\""
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.9.1",
+    "css-loader": "0.23.1",
+    "fetch-plus": "3.8.1",
+    "fetch-plus-bearerauth": "3.5.0",
+    "fetch-plus-json": "3.6.0",
+    "file-loader": "0.8.5",
+    "isomorphic-fetch": "2.2.1",
+    "isomorphic-style-loader": "0.0.10",
+    "koa": "1.2.0",
+    "koa-proxy": "0.5.0",
+    "koa-static": "2.0.0",
+    "node-sass": "^3.8.0",
+    "react": "^15.1.0",
+    "react-dom": "*",
+    "react-inline-css": "^2.1.1",
+    "react-router": "^2.5.1",
+    "react-transmit": "*",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.1"
+  },
+  "devDependencies": {
+    "babel": "*",
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-react-hmre": "*",
+    "babel-preset-stage-0": "*",
+    "concurrently": "2.0.0",
+    "forever": "0.15.1",
+    "json-loader": "0.5.4",
+    "just-wait": "1.0.5",
+    "webpack": "*",
+    "webpack-dev-server": "*",
+    "webpack-node-externals": "*"
+  },
+  "engines": {
+    "node": ">=0.10.32"
+  }
+}

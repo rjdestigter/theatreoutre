@@ -1,23 +1,23 @@
 import React from 'react'
 import Transmit from 'react-transmit'
+import Background from 'components/Background'
 
 class TheatreOutre extends React.Component {
-
-  constructor () {
-    super()
-    this.state = {
-      user: 1,
-    }
-  }
-
   render () {
     return (
-      <h1>Hello World</h1>
+      <Background />
     )
   }
 }
 
-export default Transmit.createContainer(TheatreOutre, {
-  initialVariables: {},
-  fragments: {},
-})
+if (__CLIENT__) {
+  TheatreOutre.childContextTypes = {
+    insertCss: React.PropTypes.func,
+  }
+
+  TheatreOutre.prototype.getChildContext = () => ({
+    insertCss: (styles) => styles._insertCss(),
+  })
+}
+
+export default TheatreOutre

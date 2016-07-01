@@ -11,6 +11,8 @@ import githubApi from 'apis/github'
 import routesContainer from 'containers/routes'
 import favicon from 'favicon.ico'
 
+import reset from "isomorphic-style!css?modules!sass!reset.scss";
+console.log(reset)
 try {
   const app = koa()
   const hostname = process.env.HOSTNAME || 'localhost'
@@ -26,7 +28,7 @@ try {
   }))
 
   app.use(function *(next) {
-    yield ((callback) => {
+    yield (callback) => {
       const webserver = __PRODUCTION__ ? '' : `//${this.hostname}:8080`
       const location = this.path
 
@@ -41,18 +43,20 @@ try {
           return
         }
 
-        const styles = {}
+        const styles = {
+          global: reset._getCss(),
+        }
 
         const StyleProvider = React.createClass({
           childContextTypes: {
-            // styles: React.PropTypes.array,
-            // insertCss: React.PropTypes.func,
+            styles: React.PropTypes.object,
+            insertCss: React.PropTypes.func,
           },
 
           getChildContext () {
             return {
-              // styles,
-              // insertCss (style) { styles[style] = style._getCss() },
+              styles,
+              insertCss (style) { styles[style] = style._getCss() },
             }
           },
 
@@ -66,12 +70,12 @@ try {
 
           Object.keys(styles).forEach((style) => { cssModules += styles[style] })
 
-          let template = (
+          const template = (
             `<!doctype html>
             <html lang='en-us'>
               <head>
                 <meta charset='utf-8' />
-                <title>react-isomorphic-starterkit</title>
+                <title>Theatre Outré</title>
                 <link rel='shortcut icon' href='${favicon}' />
                 <style>${cssModules}</style>
               </head>
@@ -89,7 +93,7 @@ try {
           callback(e)
         })
       })
-    })
+    }
   })
 
   app.listen(port, () => {
@@ -112,8 +116,7 @@ try {
       })
     }
   }
-}
-catch (error) {
+} catch (error) {
   console.error(error.stack || error)
 
   throw error

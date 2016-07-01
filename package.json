@@ -24,7 +24,8 @@
     "watch-server": "webpack --watch --verbose --colors --display-error-details --config configs/webpack.server-watch.js",
     "watch-server-start": "node node_modules/just-wait --pattern \"dist/*.js\" && npm run start",
     "watch-client": "webpack-dev-server --config configs/webpack.client-watch.js",
-    "watch": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\""
+    "watch": "concurrently --kill-others \"npm run watch-server-start\" \"npm run watch-server\" \"npm run watch-client\"",
+    "kill": "concurrently --kill-others"
   },
   "dependencies": {
     "babel-polyfill": "^6.9.1",
@@ -38,6 +39,7 @@
     "koa": "1.2.0",
     "koa-proxy": "0.5.0",
     "koa-static": "2.0.0",
+    "lodash": "^4.13.1",
     "node-sass": "^3.8.0",
     "react": "^15.1.0",
     "react-dom": "*",
@@ -66,10 +68,10 @@
     "eslint-plugin-promise": "^1.3.2",
     "eslint-plugin-react": "^5.2.2",
     "eslint-plugin-standard": "^1.3.2",
-    "concurrently": "2.0.0",
-    "forever": "0.15.1",
-    "json-loader": "0.5.4",
-    "just-wait": "1.0.5",
+    "concurrently": "*",
+    "forever": "*",
+    "json-loader": "*",
+    "just-wait": "*",
     "webpack": "*",
     "webpack-dev-server": "*",
     "webpack-node-externals": "*"

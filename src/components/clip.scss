@@ -1,0 +1,12 @@
+.clip {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: Cyan;
+  background-image: url(images/dots.png), url(images/thecuringroom.jpg);
+	background-repeat: repeat, no-repeat;
+	background-position: 0 0;
+	background-size: 2px 2px, cover;
+}

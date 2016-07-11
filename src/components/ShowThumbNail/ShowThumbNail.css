@@ -1,0 +1,40 @@
+@import '../variables.css';
+
+
+
+.thumbnails img {
+  width: 100%;
+}
+
+.root {
+  max-width: 300px;
+  text-align: right;
+}
+
+.root:hover .image img {
+  -webkit-filter: contrast(100%) brightness(100%) drop-shadow(0 -5px 1px rgba(0,0,0,0.3));
+}
+
+.image img {
+  margin-bottom: -7.85%;
+  -webkit-filter: contrast(15%) brightness(15%) drop-shadow(0 -5px 1px rgba(0,0,0,0.3));
+  transition: -webkit-filter 0.5s ease-in-out;
+}
+
+.bar {
+  background-color: #111111;
+  height: 25px;
+  width: 100%;
+  margin-top: -2px;
+}
+
+.title {
+  font-weight: normal;
+  margin: 0;
+  font-family: BebasNeueRegular;
+  text-transform: uppercase;
+  font-size: 40px;
+  line-height: 48px;
+  margin-top: 3px;
+  color: #EDEDED;
+}

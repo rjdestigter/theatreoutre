@@ -35,6 +35,14 @@ const GLOBALS = {
 // -----------------------------------------------------------------------------
 
 const config = {
+  resolve: {
+    root: [
+      path.resolve(__dirname, '../src'),
+    ],
+    modulesDirectories: ['node_modules'],
+    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json'],
+  },
+
   context: path.resolve(__dirname, '../src'),
 
   output: {
@@ -125,12 +133,6 @@ const config = {
         loader: 'jade-loader',
       },
     ],
-  },
-
-  resolve: {
-    root: path.resolve(__dirname, '../src'),
-    modulesDirectories: ['node_modules'],
-    extensions: ['', '.webpack.js', '.web.js', '.js', '.jsx', '.json'],
   },
 
   cache: DEBUG,

@@ -1,5 +1,11 @@
 {
+  "name": "theatreoutre",
+  "version": "5.0.1",
+  "description": "Website for Theatre Outré, Lethbridge, AB, Canada",
   "private": true,
+  "main": "start.js",
+  "author": "John de Stigter <johndestigter@gmail.com>",
+  "license": "ISC",
   "engines": {
     "node": ">=5.0 <7",
     "npm": ">=3.3 <4"
@@ -35,7 +41,10 @@
     "pretty-error": "2.0.0",
     "react": "15.0.2",
     "react-dom": "15.0.2",
+    "react-motion": "^0.4.4",
     "react-redux": "^4.4.5",
+    "react-sidebar": "^2.1.4",
+    "react-swipeable-views": "^0.6.4",
     "redux": "^3.4.0",
     "redux-thunk": "^2.1.0",
     "sequelize": "3.23.2",

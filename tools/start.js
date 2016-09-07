@@ -64,8 +64,11 @@ async function start() {
         }));
       /* eslint-enable no-param-reassign */
     });
-
+    console.log(`\n\n\n\n\n\TTTTTTTTTTTTTTAAAAAAAAAAAAAAAA`);
+    console.log(webpackConfig[0].resolve);
+    console.log(`\n\n\n\n\n\TTTTTTTTTTTTTTAAAAAAAAAAAAAAAA`);
     const bundler = webpack(webpackConfig);
+    console.log('BBUUNNDLED');
     const wpMiddleware = webpackMiddleware(bundler, {
 
       // IMPORTANT: webpack middleware can't access config,

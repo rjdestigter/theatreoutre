@@ -12,6 +12,8 @@ import App from '../components/App';
 
 // Child routes
 import home from './home';
+import about from './about';
+import shows from './shows';
 import contact from './contact';
 import login from './login';
 import register from './register';
@@ -21,9 +23,13 @@ import error from './error';
 export default {
 
   path: '/',
-
+  onUpdate() {
+    debugger;
+  },
   children: [
     home,
+    shows,
+    about,
     contact,
     login,
     register,

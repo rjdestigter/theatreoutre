@@ -9,6 +9,8 @@
 
 import React, { Component, PropTypes } from 'react';
 import history from '../../core/history';
+import { connect } from 'react-redux';
+import { toggleMenu } from '../../actions/menu';
 
 function isLeftClickEvent(event) {
   return event.button === 0;
@@ -51,6 +53,8 @@ class Link extends Component { // eslint-disable-line react/prefer-stateless-fun
           search: event.currentTarget.search,
         });
       }
+
+      this.props.close();
     }
   };
 
@@ -61,4 +65,8 @@ class Link extends Component { // eslint-disable-line react/prefer-stateless-fun
 
 }
 
-export default Link;
+const mapDispatchToProps = (dispatch) => ({
+  close: () => dispatch(toggleMenu(false)),
+});
+
+export default connect(null, mapDispatchToProps)(Link);

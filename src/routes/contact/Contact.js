@@ -19,7 +19,8 @@ function Contact(props, context) {
     <div className={s.root}>
       <div className={s.container}>
         <h1>{title}</h1>
-        <p>...</p>
+        <p>E-mail us at info[at]theatreoutre.ca or check us out on Facebook and Twitter.</p>
+        <p>Please message us for mailing address information if needed.</p>
       </div>
     </div>
   );

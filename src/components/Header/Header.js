@@ -13,11 +13,11 @@ import s from './Header.css';
 import Link from '../Link';
 import Navigation from '../Navigation';
 import logoUrl from '../../public/logo-banner.svg';
-import { THEATRE_OUTRE } from '../../constants'
+import { THEATRE_OUTRE } from '../../constants';
 import Flex from '../Flex';
-import b from '../bebas.css'
+import b from '../bebas.css';
 
-const Header = ()  => (
+const Header = () => (
   <Flex row base={45} isRow className={`${s.header} ${b.bebas}`}>
     <div className={s.logo}>
       <Link to="/">
@@ -25,15 +25,15 @@ const Header = ()  => (
       </Link>
     </div>
     <Flex>
-      <a className={s.link} href='#'>Contact Us</a>
+      <Link to="/contact" className={s.link} href="#">Contact Us</Link>
     </Flex>
     <Flex className={s.spacer}>|</Flex>
     <Flex>
-      <a className={s.link} href='#'>Club Didi Membership</a>
+      <a className={s.link} href="#">Club Didi Membership</a>
     </Flex>
     <Flex className={s.spacer}>|</Flex>
     <Flex>
-      <a className={s.link} href='#'>Tickets</a>
+      <a className={s.link} href="#">Tickets</a>
     </Flex>
   </Flex>
 );

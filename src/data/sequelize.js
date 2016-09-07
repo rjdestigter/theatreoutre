@@ -10,6 +10,7 @@
 import Sequelize from 'sequelize';
 import { databaseUrl } from '../config';
 
+//const sequelize = new Sequelize(databaseUrl, 'adminK3cRj6c', 'jRYZ-Tm5ifPx', {
 const sequelize = new Sequelize(databaseUrl, 'root', '', {
   define: {
     freezeTableName: true,

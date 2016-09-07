@@ -10,10 +10,10 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import EventEmitter from 'eventemitter3';
 import { canUseDOM } from 'fbjs/lib/ExecutionEnvironment';
-import debounce from 'lodash.debounce'
+import debounce from 'lodash.debounce';
 
 let EE;
-let viewport = { width: 1366, height: 768 }; // Default size for server-side rendering
+let viewport = { width: 400, height: 768 }; // Default size for server-side rendering
 const RESIZE_EVENT = 'resize';
 
 function handleWindowResize() {
@@ -56,7 +56,9 @@ function withViewport(ComposedComponent) {
     }
 
     render() {
-      return <ComposedComponent {...this.props} viewport={this.state.viewport} />;
+      return (
+        <ComposedComponent {...this.props} viewport={this.state.viewport} />
+      );
     }
 
     handleResize(value) {

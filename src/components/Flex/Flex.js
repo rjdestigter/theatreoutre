@@ -32,6 +32,7 @@ const Flex = ({
   style = {},
   className = null,
   children,
+  ...props,
 }) => {
   let flexProps = {};
 
@@ -65,6 +66,7 @@ const Flex = ({
   return (
     <div
       className={className}
+      {...props}
       style={{
         ...flexProps,
         ...style,

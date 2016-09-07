@@ -10,10 +10,10 @@
 /* eslint-disable max-len */
 /* jscs:disable maximumLineLength */
 
-export const port = process.env.PORT || 3000;
-export const host = process.env.WEBSITE_HOSTNAME || `localhost:${port}`;
+export const port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+export const host = process.env.OPENSHIFT_NODEJS_IP || process.env.WEBSITE_HOSTNAME || 'localhost';
 
-export const databaseUrl = process.env.DATABASE_URL || 'test';
+export const databaseUrl = 'test' // process.env.DATABASE_URL + '/web';
 
 export const analytics = {
 

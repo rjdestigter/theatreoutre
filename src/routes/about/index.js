@@ -7,4 +7,15 @@
  * LICENSE.txt file in the root directory of this source tree.
  */
 
-@import '../../components/variables.css';
+import React from 'react';
+import About from './About';
+
+export default {
+
+  path: '/about',
+
+  action() {
+    return <About />;
+  },
+
+};

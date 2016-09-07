@@ -12,18 +12,19 @@ import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import expressJwt from 'express-jwt';
-import expressGraphQL from 'express-graphql';
-import jwt from 'jsonwebtoken';
+// import expressJwt from 'express-jwt';
+// import expressGraphQL from 'express-graphql';
+// import jwt from 'jsonwebtoken';
 import ReactDOM from 'react-dom/server';
 import { match } from 'universal-router';
 import PrettyError from 'pretty-error';
-import passport from './core/passport';
-import models from './data/models';
-import schema from './data/schema';
+// import passport from './core/passport';
+// import models from './data/models';
+// import schema from './data/schema';
 import routes from './routes';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
-import { port, auth, analytics } from './config';
+// import { host, port, auth, analytics } from './config';
+import { host, port } from './config';
 import configureStore from './store/configureStore';
 import { setRuntimeVariable } from './actions/runtime';
 
@@ -47,37 +48,37 @@ app.use(bodyParser.json());
 //
 // Authentication
 // -----------------------------------------------------------------------------
-app.use(expressJwt({
-  secret: auth.jwt.secret,
-  credentialsRequired: false,
-  /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
-  getToken: req => req.cookies.id_token,
-  /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
-}));
-app.use(passport.initialize());
+// app.use(expressJwt({
+//   secret: auth.jwt.secret,
+//   credentialsRequired: false,
+//   /* jscs:disable requireCamelCaseOrUpperCaseIdentifiers */
+//   getToken: req => req.cookies.id_token,
+//   /* jscs:enable requireCamelCaseOrUpperCaseIdentifiers */
+// }));
+// app.use(passport.initialize());
 
-app.get('/login/facebook',
-  passport.authenticate('facebook', { scope: ['email', 'user_location'], session: false })
-);
-app.get('/login/facebook/return',
-  passport.authenticate('facebook', { failureRedirect: '/login', session: false }),
-  (req, res) => {
-    const expiresIn = 60 * 60 * 24 * 180; // 180 days
-    const token = jwt.sign(req.user, auth.jwt.secret, { expiresIn });
-    res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
-    res.redirect('/');
-  }
-);
+// app.get('/login/facebook',
+//   passport.authenticate('facebook', { scope: ['email', 'user_location'], session: false })
+// );
+// app.get('/login/facebook/return',
+//   passport.authenticate('facebook', { failureRedirect: '/login', session: false }),
+//   (req, res) => {
+//     const expiresIn = 60 * 60 * 24 * 180; // 180 days
+//     const token = jwt.sign(req.user, auth.jwt.secret, { expiresIn });
+//     res.cookie('id_token', token, { maxAge: 1000 * expiresIn, httpOnly: true });
+//     res.redirect('/');
+//   }
+// );
 
 //
 // Register API middleware
 // -----------------------------------------------------------------------------
-app.use('/graphql', expressGraphQL(req => ({
-  schema,
-  graphiql: true,
-  rootValue: { request: req },
-  pretty: process.env.NODE_ENV !== 'production',
-})));
+// app.use('/graphql', expressGraphQL(req => ({
+//   schema,
+//   graphiql: true,
+//   rootValue: { request: req },
+//   pretty: process.env.NODE_ENV !== 'production',
+// })));
 
 //
 // Register server-side rendering middleware
@@ -90,7 +91,7 @@ app.get('*', async (req, res, next) => {
     const data = { title: '', description: '', css: '', body: '', entry: assets.main.js };
 
     if (process.env.NODE_ENV === 'production') {
-      data.trackingId = analytics.google.trackingId;
+      // data.trackingId = analytics.google.trackingId;
     }
 
     const store = configureStore({}, {
@@ -152,9 +153,9 @@ app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 // Launch the server
 // -----------------------------------------------------------------------------
 /* eslint-disable no-console */
-models.sync().catch(err => console.error(err.stack)).then(() => {
-  app.listen(port, () => {
-    console.log(`The server is running at http://localhost:${port}/`);
-  });
+// models.sync().catch(err => console.error(err.stack)).then(() => {
+app.listen(port, host, () => {
+  console.log(`The server is running at http://${host}:${port}/`);
 });
+// });
 /* eslint-enable no-console */
